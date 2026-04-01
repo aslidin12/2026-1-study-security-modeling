@@ -1,7 +1,7 @@
 ---
 ## Author
 author:
-  name: Беличева Дарья Михайловна
+  name: Ахлиддинзода Аслиддин
   degrees: DSc
   orcid: 0000-0002-0877-7063
   email: kulyabov-ds@rudn.ru
