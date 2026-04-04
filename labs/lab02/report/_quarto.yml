@@ -6,9 +6,12 @@ standalone: true
 self-contained: true
 
 ## Julia support
-# engine: julia
-# julia:
-#   exeflags: ["--project=../project"]
+jupyter: julia-project-1.12
+engine: julia
+julia:
+  exeflags: ["--project=../project"]
+format-options:
+  fig-format: png
 
 ## Generic options
 lang: ru-RU
