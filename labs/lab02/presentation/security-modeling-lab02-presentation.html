@@ -1,0 +1,111 @@
+<h1 id="информация">Информация</h1>
+<h2 id="докладчик">Докладчик</h2>
+<div class="columns" data-align="center">
+<div class="column" style="width:70%;">
+<ul>
+<li>Ахлиддинзода Аслиддин</li>
+<li>студент группы НФИмд-01-25</li>
+<li>Российский университет дружбы народов</li>
+<li><a href="mailto:1032259392@rudn.ru">1032259392@rudn.ru</a></li>
+<li><a href="https://github.com/aslidin12" class="uri">https://github.com/aslidin12</a></li>
+</ul>
+</div><div class="column" style="width:30%;">
+
+</div>
+</div>
+<h1 id="введение">Введение</h1>
+<h2 id="цель-работы">Цель работы</h2>
+<p>Освоить базовые методы вероятностного моделирования случайных процессов в контексте кибербезопасности на примере моделирования потока атак на веб-сервер.</p>
+<h1 id="задачи">Задачи</h1>
+<ul>
+<li><p>Реализовать симуляцию пуассоновского потока атак.</p></li>
+<li><p>Выполнить статистический анализ результатов:</p>
+<ul>
+<li>гистограмма числа атак за час;</li>
+<li>накопленное число атак;</li>
+<li>проверка экспоненциальности интервалов (QQ-plot);</li>
+<li>оценка вероятности P(&gt;10 атак за час).</li>
+</ul></li>
+<li><p>Исследовать сходимость оценки вероятности от объёма выборки.</p></li>
+<li><p>Провести параметрическое исследование по λ.</p></li>
+<li><p>Преобразовать код в литературный стиль и сгенерировать производные форматы.</p></li>
+</ul>
+<h1 id="подготовка-проекта">Подготовка проекта</h1>
+<figure>
+<img src="image/1.png" id="fig-001" style="width:65.0%" alt="Скрипт src/simulation.jl" /><figcaption aria-hidden="true">Скрипт src/simulation.jl</figcaption>
+</figure>
+<h1 id="подготовка-проекта-1">Подготовка проекта</h1>
+<figure>
+<img src="image/2.png" id="fig-002" style="width:40.0%" alt="Скрипт scripts/run_experiment.jl" /><figcaption aria-hidden="true">Скрипт scripts/run_experiment.jl</figcaption>
+</figure>
+<h1 id="подготовка-проекта-2">Подготовка проекта</h1>
+<figure>
+<img src="image/3.png" id="fig-003" style="width:50.0%" alt="Скрипт scripts/analyze.jl" /><figcaption aria-hidden="true">Скрипт scripts/analyze.jl</figcaption>
+</figure>
+<h1 id="подготовка-проекта-3">Подготовка проекта</h1>
+<figure>
+<img src="image/4.png" id="fig-004" style="width:30.0%" alt="Скрипт scripts/convergence.jl" /><figcaption aria-hidden="true">Скрипт scripts/convergence.jl</figcaption>
+</figure>
+<h1 id="подготовка-проекта-4">Подготовка проекта</h1>
+<figure>
+<img src="image/5.png" id="fig-005" style="width:30.0%" alt="Скрипт scripts/parameter_sweep.jl" /><figcaption aria-hidden="true">Скрипт scripts/parameter_sweep.jl</figcaption>
+</figure>
+<h1 id="моделирование-пуассоновского-потока">Моделирование пуассоновского потока</h1>
+<figure>
+<img src="image/6.png" id="fig-006" style="width:45.0%" alt="Скрипт scripts/01_poisson_attacks.jl" /><figcaption aria-hidden="true">Скрипт scripts/01_poisson_attacks.jl</figcaption>
+</figure>
+<h1 id="генерация-производных-форматов">Генерация производных форматов</h1>
+<figure>
+<img src="image/9.png" id="fig-009" style="width:45.0%" alt="Скрипт для генерации производных форматов tangle.jl" /><figcaption aria-hidden="true">Скрипт для генерации производных форматов tangle.jl</figcaption>
+</figure>
+<h1 id="генерация-производных-форматов-1">Генерация производных форматов</h1>
+<figure>
+<img src="image/7.png" id="fig-007" style="width:50.0%" alt="Формат qmd" /><figcaption aria-hidden="true">Формат qmd</figcaption>
+</figure>
+<h1 id="генерация-производных-форматов-2">Генерация производных форматов</h1>
+<figure>
+<img src="image/8.png" id="fig-008" style="width:55.0%" alt="Выполнение кода в Jupyter Notebook" /><figcaption aria-hidden="true">Выполнение кода в Jupyter Notebook</figcaption>
+</figure>
+<h1 id="параметрическая-версия-модели">Параметрическая версия модели</h1>
+<figure>
+<img src="image/10.png" id="fig-010" style="width:45.0%" alt="Скрипт scripts/02_poisson_attacks.jl" /><figcaption aria-hidden="true">Скрипт scripts/02_poisson_attacks.jl</figcaption>
+</figure>
+<h1 id="параметрическая-версия-модели-1">Параметрическая версия модели</h1>
+<figure>
+<img src="image/11.png" id="fig-011" style="width:70.0%" alt="Формат ipynb с параметрами" /><figcaption aria-hidden="true">Формат ipynb с параметрами</figcaption>
+</figure>
+<h1 id="дополнительные-задания">Дополнительные задания</h1>
+<figure>
+<img src="image/extra1.png" id="fig-extra1" style="width:70.0%" alt="Зависимость вероятности от интенсивности атак" /><figcaption aria-hidden="true">Зависимость вероятности от интенсивности атак</figcaption>
+</figure>
+<h1 id="дополнительные-задания-1">Дополнительные задания</h1>
+<figure>
+<img src="image/extra2.png" id="fig-extra2" style="width:60.0%" alt="Нестационарный поток" /><figcaption aria-hidden="true">Нестационарный поток</figcaption>
+</figure>
+<h1 id="дополнительные-задания-2">Дополнительные задания</h1>
+<figure>
+<img src="image/extra3.png" id="fig-extra3" style="width:70.0%" alt="Вероятности редких событий" /><figcaption aria-hidden="true">Вероятности редких событий</figcaption>
+</figure>
+<h1 id="дополнительные-задания-3">Дополнительные задания</h1>
+<figure>
+<img src="image/extra4.png" id="fig-extra4" style="width:70.0%" alt="Бутстреп-распределение оценки вероятности" /><figcaption aria-hidden="true">Бутстреп-распределение оценки вероятности</figcaption>
+</figure>
+<h1 id="дополнительные-задания-4">Дополнительные задания</h1>
+<figure>
+<img src="image/extra5.png" id="fig-extra5" style="width:60.0%" alt="Прореженный поток" /><figcaption aria-hidden="true">Прореженный поток</figcaption>
+</figure>
+<h1 id="выводы">Выводы</h1>
+<ol type="1">
+<li><p>Сформирована структура рабочего пространства на основе DrWatson с разделением исходных кодов, данных и документации.</p></li>
+<li><p>Реализована симуляция пуассоновского потока атак двумя способами: почасовые счётчики и точные моменты через экспоненциальные интервалы.</p></li>
+<li><p>Выполнен статистический анализ: гистограммы, накопленный график, QQ-plot подтверждают соответствие теоретическим распределениям.</p></li>
+<li><p>Проведено параметрическое исследование: при росте λ от 2 до 15 вероятность P(&gt;10) возрастает от ~0 до ~0.88.</p></li>
+<li><p>Исследована сходимость оценки вероятности редкого события: для надёжной оценки при λ=5 необходим объём выборки порядка 10 000–100 000 часов.</p></li>
+<li><p>Из литературного кода автоматически сгенерированы три формата: чистый скрипт, Jupyter Notebook и документ Quarto.</p></li>
+</ol>
+<h1 id="список-литературы">Список литературы</h1>
+<ol type="1">
+<li>JuliaLang [Электронный ресурс]. 2024 JuliaLang.org contributors. URL: https: //julialang.org/ (дата обращения: 11.10.2024).</li>
+<li>Julia 1.11 Documentation [Электронный ресурс]. 2024 JuliaLang.org contributors. URL: https://docs.julialang.org/en/v1/ (дата обращения: 11.10.2024).</li>
+<li>Самарский А. А., Михайлов А. П. Математическое моделировамоделирование: Идеи. Методы. Примеры… — М.: Физматлит, 2001.. — 320 с. — ISBN 5-9221-0120-Х.</li>
+</ol>

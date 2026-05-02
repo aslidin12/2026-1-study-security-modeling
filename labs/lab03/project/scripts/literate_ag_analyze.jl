@@ -1,0 +1,98 @@
+# # Анализ и визуализация графа атак
+# 
+# ## Цель
+# 
+# Визуализировать построенный граф атак и проанализировать его свойства.
+# 
+# ## Загрузка данных
+
+using DrWatson
+@quickactivate "project"
+
+using Graphs
+using JLD2
+using Plots
+using GraphRecipes
+using Statistics
+
+# Подключаем локальный модуль AttackGraph
+include(joinpath(projectdir(), "src", "attack_graph.jl"))
+using .AttackGraph
+
+params = Dict(:n => 20, :edge_prob => 0.2, :source => 1, :target => 20)
+
+filename = datadir("attack_graph", savename(params, "jld2"))
+
+if !isfile(filename)
+    error("Файл $filename не найден. Сначала запустите симуляцию.")
+end
+
+@load filename data
+g = data[:graph]
+metrics = data[:metrics]
+paths = data[:paths]
+likely_path = data[:likely_path]
+probability = data[:probability]
+
+println("=== Анализ графа атак ===")
+
+# ## Основные характеристики
+
+println("\nОСНОВНАЯ ИНФОРМАЦИЯ:")
+println("  Количество узлов: $(nv(g))")
+println("  Количество рёбер: $(ne(g))")
+println("  Количество путей: $(length(paths))")
+println("  Наиболее вероятный путь: $(join(likely_path, " → "))")
+println("  Вероятность успеха: $(round(probability * 100, digits=2))%")
+
+# ## Топ-5 узлов по входящей степени
+
+println("\nТОП-5 НАИБОЛЕЕ АТАКУЕМЫХ УЗЛОВ:")
+in_degree = metrics[:in_degree]
+top_indeg = sortperm(in_degree, rev=true)[1:5]
+for (rank, node) in enumerate(top_indeg)
+    println("  $rank. Узел $node: $(in_degree[node]) атак")
+end
+
+# ## Топ-5 узлов по PageRank
+
+println("\nТОП-5 НАИБОЛЕЕ ВАЖНЫХ УЗЛОВ (PageRank):")
+pagerank = metrics[:pagerank]
+top_pr = sortperm(pagerank, rev=true)[1:5]
+for (rank, node) in enumerate(top_pr)
+    println("  $rank. Узел $node: $(round(pagerank[node], digits=4))")
+end
+
+# ## Визуализация графа
+
+println("\nПостроение графика...")
+
+pagerank_min = minimum(pagerank)
+pagerank_max = maximum(pagerank)
+
+if pagerank_max > pagerank_min
+    normalized_rank = (pagerank .- pagerank_min) ./ (pagerank_max - pagerank_min)
+else
+    normalized_rank = zeros(length(pagerank))
+end
+
+colors = [cgrad(:RdYlGn, rev=true)[normalized_rank[i]] for i in 1:nv(g)]
+
+p = graphplot(
+    g,
+    nodeshape = :circle,
+    nodecolor = colors,
+    linecolor = :black,
+    nodelabel = 1:nv(g),
+    title = "Граф атак (цвет = важность по PageRank)",
+    size = (800, 600),
+)
+
+mkpath(plotsdir())
+plot_path = plotsdir("attack_graph.png")
+savefig(p, plot_path)
+println("  График сохранён в: $plot_path")
+
+# ## Выводы
+
+println("\nАнализ завершён.")

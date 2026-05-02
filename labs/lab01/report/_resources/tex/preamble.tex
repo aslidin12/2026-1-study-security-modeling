@@ -1,0 +1,22 @@
+% \usepackage{juliamono}
+% \usepackage[T1]{fontenc}
+% \usepackage{cmap}
+% \usepackage[utf8]{inputenc}
+% \usepackage[russian,english]{babel}
+% \usepackage{babel}
+% \babelfont[russian]{rm}[Scale=MatchLowercase]{Brill}
+\usepackage{indentfirst}
+\usepackage{float}
+\floatplacement{figure}{H}
+\IfFileExists{plex-otf.sty}{
+  %% Full TeXlive
+  \usepackage[
+    % math,
+    RM={Scale=0.94},SS={Scale=0.94},SScon={Scale=0.94},TT={Scale=MatchLowercase,FakeStretch=0.9},
+    DefaultFeatures={Ligatures=Common}
+  ]{plex-otf}
+  \usepackage[Scale=MatchUppercase]{juliamono}
+}{
+  %% TinyTeX
+  \usepackage{libertine}
+}
