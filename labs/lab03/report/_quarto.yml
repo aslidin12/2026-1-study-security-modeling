@@ -6,9 +6,9 @@ standalone: true
 self-contained: true
 
 ## Julia support
-# engine: julia
-# julia:
-#   exeflags: ["--project=../project"]
+engine: julia
+julia:
+    exeflags: ["--project=C:/Users/Admin/work/study/2026-1/2026-1==study--security-modeling/labs/lab02/project"]
 
 ## Generic options
 lang: ru-RU
@@ -64,3 +64,4 @@ format:
     indent: true
     include-in-header:
       - file: _resources/tex/preamble.tex
+
