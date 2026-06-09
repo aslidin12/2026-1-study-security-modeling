@@ -5,10 +5,16 @@ project:
 standalone: true
 self-contained: true
 
+execute:
+  enabled: false
+
 ## Julia support
-# engine: julia
-# julia:
-#   exeflags: ["--project=../project"]
+jupyter: julia-lab04-1.12-1.12
+engine: julia
+julia:
+  exeflags: ["--project=../project"]
+format-options:
+  fig-format: png
 
 ## Generic options
 lang: ru-RU

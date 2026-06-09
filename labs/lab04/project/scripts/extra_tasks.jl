@@ -1,0 +1,65 @@
+# # Дополнительное задание: третья стратегия «Не атаковать» / «Не защищать»
+#
+# Добавляем стратегию «Не атаковать» для Нападающего и «Не защищать ничего»
+# для Защитника. Платёжная матрица становится 3×3. Модифицируем функции,
+# находим равновесие и сравниваем с базовой моделью 2×2.
+
+ENV["GKSwstype"] = "100"
+
+using DrWatson
+@quickactivate "project"
+
+# ## Загрузка зависимостей
+
+using Plots, LinearAlgebra
+include(srcdir("simulation.jl"))
+
+# ## Параметры
+
+V = [10.0, 10.0]
+c_a = 1.0
+c_d = 1.0
+
+# ## Базовая модель 2×2
+
+A2, D2 = build_payoff_matrices(V, c_a, c_d)
+eq2 = mixed_nash_2x2(A2, D2)
+
+println("=== Базовая модель 2×2 ===")
+println("Матрица A:\n", A2)
+println("Матрица D:\n", D2)
+println("Тип равновесия: ", eq2.type)
+println("p = ", round.(eq2.p, digits=3), "  q = ", round.(eq2.q, digits=3))
+
+if eq2.type == "pure"
+    i = argmax(eq2.p); j = argmax(eq2.q)
+    UA2 = A2[i, j]; UD2 = D2[i, j]
+else
+    UA2 = eq2.p' * A2 * eq2.q
+    UD2 = eq2.p' * D2 * eq2.q
+end
+println("UA = ", round(UA2, digits=3), "  UD = ", round(UD2, digits=3))
+
+# ## Расширенная модель 3×3
+
+A3, D3 = build_payoff_matrices_3x3(V, c_a, c_d)
+
+println("\n=== Расширенная модель 3×3 ===")
+println("Матрица A:\n", A3)
+println("Матрица D:\n", D3)
+
+# ## Визуализация: сравнение матриц A базовой и расширенной модели
+
+p1 = heatmap(A2,
+    title = "A (базовая 2×2)",
+    xlabel = "j (защита)", ylabel = "i (атака)",
+    color = :RdYlGn, clims = (-5, 10), size = (400, 350))
+
+p2 = heatmap(A3,
+    title = "A (расширенная 3×3)",
+    xlabel = "j (защита)", ylabel = "i (атака)",
+    color = :RdYlGn, clims = (-5, 10), size = (400, 350))
+
+plot(p1, p2, layout = (1, 2), size = (900, 400))
+savefig(plotsdir("extra_extended_payoff.png"))
+println("График сохранён: extra_extended_payoff.png")

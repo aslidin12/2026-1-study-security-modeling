@@ -1,0 +1,21 @@
+# Запуск симуляций
+
+```{julia}
+using DrWatson
+@quickactivate "project"
+
+include(srcdir("simulation.jl"))
+```
+
+## Запуск
+
+```{julia}
+println("Запуск симуляций...")
+results = main_simulations()
+println("Готово! Сохранено строк: ", nrow(results))
+```
+
+---
+
+*This page was generated using [Literate.jl](https://github.com/fredrikekre/Literate.jl).*
+
